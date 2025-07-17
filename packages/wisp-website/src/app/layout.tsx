@@ -41,7 +41,7 @@ const RootLayout = async ({
   return (
     <html dir={localeDirection} lang={locale}>
       <body
-        className={`${sourceCodePro.variable} ${workSans.variable} antialiased bg-neutral-950 font-sans selection:bg-accent-200 selection:text-black text-neutral-100`}
+        className={`${sourceCodePro.variable} ${workSans.variable} antialiased bg-neutral-950 font-sans relative selection:bg-accent-200 selection:text-black text-neutral-100`}
       >
         <AppProviders locale={locale} localeDirection={localeDirection}>
           {children}
