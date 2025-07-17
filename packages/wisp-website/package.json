@@ -56,7 +56,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "directory": "packages/website",
+    "directory": "packages/wisp-website",
     "url": "https://github.com/spear-ai/wisp-website.git"
   },
   "scripts": {
