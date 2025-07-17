@@ -1,0 +1,50 @@
+name: Build and check
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+  push:
+    branches:
+      - main
+env:
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+jobs:
+  checks:
+    name: Build and check
+    runs-on: linux-x64-ubuntu-latest-4cpu-16gb-150gb
+    timeout-minutes: 10
+    env:
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 2
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.4.0
+        with:
+          cache: pnpm
+          node-version-file: .node-version
+      - name: Install Node.js dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm turbo run build
+      - name: Check
+        run: pnpm turbo run check
+      - id: git-tree
+        name: Ensure Git tree is clean
+        uses: infotroph/tree-is-clean@v1.0.6
+        with:
+          check_untracked: true
+      - if: failure() && steps.git-tree.outcome == 'failure'
+        name: Explain dirty Git tree
+        run: |
+          echo "The Git tree is dirty. If you have unstaged changes, please commit them."
+          exit 1

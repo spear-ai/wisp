@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0.01 238 42.09">
+  <style>
+    path {
+      fill: #141619;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      path {
+        fill: #e4e6e9;
+      }
+    }
+  </style>
+  <g>
+    <path d="M238 2c-100,100 -129,-27 -238,40 90,-102 120,22 238,-40z" />
+  </g>
+</svg>

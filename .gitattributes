@@ -1,0 +1,6 @@
+packages/website/src/messages/compiled/* linguist-generated=true
+packages/website/src/messages/extracted/* linguist-generated=true
+pnpm-lock.yaml -diff
+pnpm-lock.yaml linguist-generated=true
+pnpm-lock.yaml linguist-vendored
+pnpm-lock.yaml merge=ours

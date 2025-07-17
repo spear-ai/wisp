@@ -1,0 +1,20 @@
+name: wisp-desktop
+services:
+  desktop:
+    build:
+      context: ../..
+      dockerfile: packages/wisp-desktop/Dockerfile
+      labels:
+        - org.opencontainers.image.authors=Spear AI <org@spear.ai>
+        - org.opencontainers.image.description=Linux distribution for developers with good taste.
+        - org.opencontainers.image.source=https://github.com/spear-ai/wisp
+        - org.opencontainers.image.title=Wisk Desktop
+        - org.opencontainers.image.url=https://github.com/spear-ai/wisp
+        - org.opencontainers.image.vendor=Spear AI
+      tags:
+        - spearai/wisp-desktop:${MAJOR_VERSION:-latest}
+        - spearai/wisp-desktop:${MAJOR_MINOR_VERSION:-latest}
+        - spearai/wisp-desktop:${VERSION:-latest}
+    image: spearai/wisp-desktop:latest
+    ports:
+      - "6901:6901"

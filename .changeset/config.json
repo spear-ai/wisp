@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+  "access": "restricted",
+  "baseBranch": "main",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "spear-ai/wisp"
+    }
+  ],
+  "commit": false,
+  "fixed": [],
+  "ignore": [],
+  "linked": [["@spear-ai/wisp-desktop", "@spear-ai/wisp-website"]],
+  "privatePackages": {
+    "version": true,
+    "tag": true
+  },
+  "updateInternalDependencies": "patch"
+}

@@ -1,0 +1,75 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+jobs:
+  changesets:
+    name: Changesets
+    runs-on: linux-x64-ubuntu-latest-4cpu-16gb-150gb
+    outputs:
+      version: ${{ steps.changesets-result.outputs.version }}
+      should-deploy: ${{ steps.changesets-result.outputs.should-deploy }}
+    permissions: write-all
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6.3.0
+        with:
+          git_commit_gpgsign: true
+          git_user_signingkey: true
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+      - name: Setup Git user
+        run: |
+          git config --global user.email org@spear.ai
+          git config --global user.name org-spear-ai
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.4.0
+        with:
+          cache: pnpm
+          node-version-file: .node-version
+      - name: Install Node.js dependencies
+        run: pnpm install --frozen-lockfile
+      - id: changesets
+        name: Run Changesets — Create a Release Pull Request or merge a Release Pull Request
+        uses: changesets/action@v1.5.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          title: Release 🚀
+          commit: Release 🚀
+          publish: pnpm run changeset publish
+          setupGitUser: false
+      - id: changesets-result
+        name: Check if Changesets should be deployed
+        env:
+          publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
+        run: |
+          should_deploy=$(echo $publishedPackages | jq '[.[] | select(.name == "@spear-ai/wisp-website")] | length > 0')
+          version=$(echo $publishedPackages | jq -r '[.[] | select(.name | contains("@spear-ai/wisp-website"))][0].version')
+          echo "should-deploy=$should_deploy" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
+  deploy:
+    if: needs.changesets.outputs.should-deploy == 'true'
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: changesets
+    permissions: write-all
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+      - name: Deploy to Vercel by pointing `deploy` branch to `main`
+        run: |
+          git checkout -B deploy
+          git reset --hard HEAD
+          git push -f origin deploy
+      - name: Notify Slack channel
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          payload: |
+            "version": "${{ needs.changesets.outputs.version }}"
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger

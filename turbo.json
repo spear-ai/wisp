@@ -1,0 +1,211 @@
+{
+  "$schema": "https://turbo.build/schema.v2.json",
+  "tasks": {
+    "//#commitlint:check": {},
+    "//#eslint:check": {},
+    "//#eslint:fix": {},
+    "//#npmpkgjsonlint:check": {},
+    "//#prettier:check": {
+      "inputs": [
+        "**/*.cjs",
+        "**/*.code-workspace",
+        "**/*.graphql",
+        "**/*.js",
+        "**/*.json",
+        "**/*.json5",
+        "**/*.jsonc",
+        "**/*.jsx",
+        "**/*.md",
+        "**/*.mjs",
+        "**/*.toml",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.yaml",
+        "**/*.yml",
+        ".prettierignore",
+        "!.next",
+        "!.turbo",
+        "!node_modules"
+      ]
+    },
+    "//#prettier:fix": {
+      "inputs": [
+        "**/*.cjs",
+        "**/*.code-workspace",
+        "**/*.graphql",
+        "**/*.js",
+        "**/*.json",
+        "**/*.json5",
+        "**/*.jsonc",
+        "**/*.jsx",
+        "**/*.md",
+        "**/*.mjs",
+        "**/*.toml",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.yaml",
+        "**/*.yml",
+        ".prettierignore",
+        "!.next",
+        "!.turbo",
+        "!node_modules"
+      ]
+    },
+    "//#root:fix": {
+      "dependsOn": ["^build"]
+    },
+    "//#typescript:check": {
+      "inputs": [
+        "**/*.cjs",
+        "**/*.js",
+        "**/*.json",
+        "**/*.mjs",
+        "**/*.ts",
+        "**/*.tsx",
+        "!.next",
+        "!.turbo",
+        "!node_modules"
+      ]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!CHANGELOG.md", "!README.md"],
+      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"]
+    },
+    "check": {
+      "dependsOn": [
+        "//#commitlint:check",
+        "//#eslint:check",
+        "//#npmpkgjsonlint:check",
+        "//#prettier:check",
+        "//#typescript:check",
+        "eslint:check",
+        "npmpkgjsonlint:check",
+        "prettier:check",
+        "typescript:check"
+      ]
+    },
+    "commitlint:check": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "dotenv-linter:check": {
+      "inputs": [".env", ".env.*"]
+    },
+    "dotenv-linter:fix": {
+      "cache": false
+    },
+    "eslint:check": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "**/*.cjs",
+        "**/*.code-workspace",
+        "**/*.js",
+        "**/*.json",
+        "**/*.json5",
+        "**/*.jsonc",
+        "**/*.jsx",
+        "**/*.md",
+        "**/*.mjs",
+        "**/*.toml",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.yaml",
+        "**/*.yml",
+        "eslint.config.js",
+        "tsconfig.json"
+      ]
+    },
+    "eslint:fix": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "fix": {
+      "cache": false,
+      "dependsOn": [
+        "//#eslint:fix",
+        "//#prettier:fix",
+        "eslint:fix",
+        "prettier:fix"
+      ]
+    },
+    "hadolint:check": {
+      "dependsOn": ["Dockerfile", "*.Dockerfile"]
+    },
+    "messages:build": {
+      "inputs": [
+        "src/**/*.js",
+        "src/**/*.jsx",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "!src/messages/__generated__/**"
+      ],
+      "outputs": [
+        "src/messages/__generated__/compiled/**",
+        "src/messages/__generated__/extracted/**"
+      ]
+    },
+    "messages:dev": {
+      "dependsOn": ["messages:build"],
+      "persistent": true
+    },
+    "npmpkgjsonlint:check": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        ".npmpackagejsonlintignore",
+        "npmpackagejsonlint.config.cjs",
+        "package.json"
+      ]
+    },
+    "prettier:check": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "**/*.cjs",
+        "**/*.code-workspace",
+        "**/*.graphql",
+        "**/*.js",
+        "**/*.json",
+        "**/*.json5",
+        "**/*.jsonc",
+        "**/*.jsx",
+        "**/*.md",
+        "**/*.mjs",
+        "**/*.toml",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.yaml",
+        "**/*.yml",
+        ".prettierignore",
+        "!.next",
+        "!.turbo",
+        "!node_modules"
+      ]
+    },
+    "prettier:fix": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "typescript:check": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "**/*.cjs",
+        "**/*.js",
+        "**/*.json",
+        "**/*.mjs",
+        "**/*.ts",
+        "**/*.tsx",
+        "!.next",
+        "!.turbo",
+        "!node_modules"
+      ]
+    }
+  },
+  "ui": "tui"
+}

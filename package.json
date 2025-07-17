@@ -1,0 +1,61 @@
+{
+  "name": "@spear-ai/wisp",
+  "version": "0.0.0",
+  "description": "Wisp",
+  "author": {
+    "name": "Spear AI",
+    "email": "org@spear.ai",
+    "url": "https://spear.ai"
+  },
+  "type": "module",
+  "dependencies": {
+    "@changesets/changelog-github": "0.5.1",
+    "@changesets/cli": "2.29.5",
+    "@commitlint/cli": "19.8.1",
+    "@spear-ai/commitlint-config": "3.2.1",
+    "@spear-ai/eslint-config": "21.1.0",
+    "@spear-ai/npm-package-json-lint-config": "3.1.2",
+    "@spear-ai/prettier-config": "3.0.0",
+    "@spear-ai/tsconfig": "4.0.1",
+    "commitlint": "19.8.1",
+    "eslint": "8.57.1",
+    "graphql": "16.11.0",
+    "graphql-config": "5.1.5",
+    "husky": "9.1.7",
+    "next-view-transitions": "0.3.4",
+    "npm-package-json-lint": "9.0.0",
+    "prettier": "3.6.2",
+    "react": "19.1.0",
+    "tailwindcss": "4.1.11",
+    "turbo": "2.5.5",
+    "typescript": "5.8.3"
+  },
+  "devDependencies": {
+    "@commitlint/types": "19.8.1"
+  },
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@10.13.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spear-ai/wisp.git"
+  },
+  "scripts": {
+    "version": "changeset version && pnpm run sync-version",
+    "commitlint:check": "commitlint --last",
+    "eslint:check": "eslint --max-warnings 0 .",
+    "eslint:fix": "pnpm eslint:check --fix",
+    "npmpkgjsonlint:check": "npmPkgJsonLint .",
+    "prepare": "husky",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "publish-packages": "pnpm run publish-packages:npm && pnpm run publish-packages:github && pnpm run publish-packages:custom && pnpm changeset tag",
+    "publish-packages:custom": "pnpm workspaces foreach -A run publish-package",
+    "publish-packages:github": "npm_config_registry=https://npm.pkg.github.com changeset publish --no-git-tag",
+    "publish-packages:npm": "changeset publish --no-git-tag",
+    "typescript:check": "tsc --noEmit"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
