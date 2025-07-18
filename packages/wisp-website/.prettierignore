@@ -1,0 +1,7 @@
+!.*
+.next
+.turbo
+__generated__
+dist
+node_modules
+package.json
