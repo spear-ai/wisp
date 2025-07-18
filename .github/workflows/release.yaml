@@ -8,7 +8,7 @@ concurrency:
 jobs:
   changesets:
     name: Changesets
-    runs-on: linux-x64-ubuntu-latest-4cpu-16gb-150gb
+    runs-on: ubuntu-24.04
     outputs:
       version: ${{ steps.changesets-result.outputs.version }}
       should-deploy: ${{ steps.changesets-result.outputs.should-deploy }}
