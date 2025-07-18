@@ -43,7 +43,7 @@ jobs:
         with:
           title: Release 🚀
           commit: Release 🚀
-          publish: pnpm run changeset publish
+          publish: pnpm changeset publish
           setupGitUser: false
       - id: changesets-result
         name: Check if Changesets should be deployed
