@@ -22,20 +22,20 @@ export const CodeBlock = () => {
       setWasCopied(true);
       resetWasCopied();
     },
-    [copy, resetWasCopied, setWasCopied],
+    [copy, resetWasCopied, setWasCopied]
   );
 
   return (
     <form onSubmit={handleSubmit}>
       <button
-        className="font-mono hover:text-primary-300 active:text-primary-300 text-xs inline-flex items-center hover:outline-primary-400 active:outline-primary-300 justify-center px-2 py-1 focus-visible:outline-2 outline-1 outline-primary-500 rounded-md cursor-default"
+        className="font-mono hover:text-primary-300 active:text-primary-300 text-xs inline-flex hover:outline-primary-400 active:outline-primary-300 justify-center px-2 py-1 focus-visible:outline-2 outline-1 outline-primary-500 rounded-md cursor-default"
         title={intl.formatMessage({
           defaultMessage: "Copy to clipboard",
           id: "aCdAsI",
         })}
         type="submit"
       >
-        <span className="text-neutral-100">{code}</span>
+        <span className="text-neutral-100 text-start">{code}</span>
         {wasCopied ? (
           <svg
             className="inline-flex size-4 ms-1 relative -top-px text-success-100"
