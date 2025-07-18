@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "exclude": [".next", "next-env.d.ts", "node_modules"],
+  "extends": "@spear-ai/tsconfig",
+  "include": [
+    "**/*.cjs",
+    "**/*.cts",
+    "**/*.js",
+    "**/*.mjs",
+    "**/*.mts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "next-env.override.d.ts",
+    "types"
+  ],
+  "types": ["types"]
+}
