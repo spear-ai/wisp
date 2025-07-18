@@ -22,7 +22,7 @@ export const CodeBlock = () => {
       setWasCopied(true);
       resetWasCopied();
     },
-    [copy, resetWasCopied, setWasCopied]
+    [copy, resetWasCopied, setWasCopied],
   );
 
   return (
