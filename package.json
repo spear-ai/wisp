@@ -41,7 +41,7 @@
     "url": "https://github.com/spear-ai/wisp.git"
   },
   "scripts": {
-    "version": "changeset version && pnpm run sync-version",
+    "version": "pnpm changeset version",
     "commitlint:check": "commitlint --last",
     "eslint:check": "eslint --max-warnings 0 .",
     "eslint:fix": "pnpm eslint:check --fix",
@@ -49,10 +49,7 @@
     "prepare": "husky",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "publish-packages": "pnpm run publish-packages:npm && pnpm run publish-packages:github && pnpm run publish-packages:custom && pnpm changeset tag",
-    "publish-packages:custom": "pnpm workspaces foreach -A run publish-package",
-    "publish-packages:github": "npm_config_registry=https://npm.pkg.github.com changeset publish --no-git-tag",
-    "publish-packages:npm": "changeset publish --no-git-tag",
+    "publish-packages": "pnpm changeset publish --no-git-tag && pnpm changeset tag",
     "typescript:check": "tsc --noEmit"
   },
   "workspaces": [
