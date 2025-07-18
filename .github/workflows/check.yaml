@@ -15,7 +15,7 @@ env:
 jobs:
   checks:
     name: Build and check
-    runs-on: linux-x64-ubuntu-latest-4cpu-16gb-150gb
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     env:
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
