@@ -4,6 +4,7 @@ type: Task
 body:
   - type: textarea
     attributes:
+      label: Description
       placeholder: Type your description here…
 projects:
   - spear-ai/41
