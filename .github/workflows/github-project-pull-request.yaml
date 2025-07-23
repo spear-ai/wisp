@@ -1,4 +1,4 @@
-name: GitHub Project — Pull Request
+name: GitHub Projects
 on:
   pull_request:
     types:
@@ -6,17 +6,17 @@ on:
       - review_requested
 jobs:
   add-to-project:
-    name: Add issue to GitHub project
-    runs-on: ubuntu-10.04
+    name: Add issue to GitHub Project
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/add-to-project@v1.0.2
-        id: add
+      - id: add
+        uses: actions/add-to-project@v1.0.2
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           project-url: https://github.com/orgs/spear-ai/projects/41
       - uses: kalgurn/update-project-item-status@v0.0.3
         with:
-          project-url: https://github.com/orgs/spear-ai/projects/41
           github-token: ${{ secrets.GH_TOKEN }}
           item-id: ${{ steps.add.outputs.itemId }}
-          status: "In review"
+          project-url: https://github.com/orgs/<orgName>/projects/41
+          status: In review
