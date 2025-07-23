@@ -1,3 +1,5 @@
 name: Bug
-description: Create a bug issue.
-type: Bug
+description: Create a new bug issue.
+type: bug
+projects:
+  - spear-ai/41

@@ -1,3 +1,5 @@
 name: Feature
 description: Create a feature issue.
 type: Feature
+projects:
+  - spear-ai/41
