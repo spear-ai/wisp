@@ -1,5 +1,5 @@
 name: Feature
-description: Create a feature issue.
+description: Create a feature request.
 type: Feature
 body:
   - type: textarea

@@ -1,0 +1,39 @@
+name: Project — Close Issue
+on:
+  issues:
+    types:
+      - closed
+jobs:
+  update-project:
+    name: Match issue to GitHub project
+    runs-on: ubuntu-10.04
+    steps:
+      - uses: actions/add-to-project@v1.0.2
+        id: add
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          project-url: https://github.com/orgs/spear-ai/projects/41
+      - name: Set the status based on the close reason
+        id: status
+        run: |
+          case "${{ github.event.issue.state_reason }}" in
+            "completed")
+              echo "status=Done" >> $GITHUB_OUTPUT
+              ;;
+            "duplicate")
+              echo "status=Duplicate" >> $GITHUB_OUTPUT
+              ;;
+            "not_planned")
+              echo "status=Not planned" >> $GITHUB_OUTPUT
+              ;;
+            *)
+              # Default to Canceled for other reasons
+              echo "status=Canceled" >> $GITHUB_OUTPUT
+              ;;
+          esac
+      - uses: kalgurn/update-project-item-status@v0.0.3
+        with:
+          project-url: https://github.com/orgs/spear-ai/projects/41
+          github-token: ${{ secrets.GH_TOKEN }}
+          item-id: ${{ steps.add.outputs.itemId }}
+          status: ${{ steps.status.outputs.status }}

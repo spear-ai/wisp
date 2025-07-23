@@ -1,5 +1,5 @@
 name: Bug
-description: Create a new bug issue.
+description: Create a bug report.
 type: Bug
 body:
   - type: textarea
