@@ -23,11 +23,7 @@ jobs:
             "duplicate")
               echo "status=Duplicate" >> $GITHUB_OUTPUT
               ;;
-            "not_planned")
-              echo "status=Not planned" >> $GITHUB_OUTPUT
-              ;;
             *)
-              # Default to Canceled for other reasons
               echo "status=Canceled" >> $GITHUB_OUTPUT
               ;;
           esac
