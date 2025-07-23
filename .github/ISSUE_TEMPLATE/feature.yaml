@@ -1,5 +1,9 @@
 name: Feature
 description: Create a feature issue.
 type: Feature
+body:
+  - type: textarea
+    attributes:
+      placeholder: Type your description here…
 projects:
   - spear-ai/41

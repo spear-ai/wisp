@@ -1,5 +1,9 @@
 name: Bug
 description: Create a new bug issue.
 type: bug
+body:
+  - type: textarea
+    attributes:
+      placeholder: Type your description here…
 projects:
   - spear-ai/41
