@@ -3,10 +3,12 @@ on:
   issues:
     types:
       - closed
+      - opened
 jobs:
-  update-project:
+  handle-close:
     name: Match issue to GitHub project
     runs-on: ubuntu-24.04
+    if: github.event.action == 'closed'
     steps:
       - uses: actions/add-to-project@v1.0.2
         id: add
@@ -33,3 +35,19 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN }}
           item-id: ${{ steps.add.outputs.itemId }}
           status: ${{ steps.status.outputs.status }}
+  handle-open:
+    name: Match issue to GitHub project
+    runs-on: ubuntu-24.04
+    if: github.event.action == 'opened'
+    steps:
+      - uses: actions/add-to-project@v1.0.2
+        id: add
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          project-url: https://github.com/orgs/spear-ai/projects/41
+      - uses: kalgurn/update-project-item-status@v0.0.3
+        with:
+          project-url: https://github.com/orgs/spear-ai/projects/41
+          github-token: ${{ secrets.GH_TOKEN }}
+          item-id: ${{ steps.add.outputs.itemId }}
+          status: Backlog
