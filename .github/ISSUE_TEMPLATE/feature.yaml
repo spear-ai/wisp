@@ -2,7 +2,7 @@ name: Feature
 description: Create a feature request.
 type: Feature
 body:
-  - type: radioboxes
+  - type: radio
     id: is-maintenance
     attributes:
       label: Is maintenance
