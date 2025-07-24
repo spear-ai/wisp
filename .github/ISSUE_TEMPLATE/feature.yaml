@@ -22,10 +22,6 @@ body:
         - Yep
     validations:
       required: true
-  - type: textarea
-    attributes:
-      label: Description
-      placeholder: Type your description here…
   - id: is-design-required
     type: dropdown
     attributes:
@@ -36,7 +32,8 @@ body:
         - Yep
     validations:
       required: true
-  - type: textarea
+  - id: Description
+    type: textarea
     attributes:
       label: Description
       placeholder: Type your description here…
