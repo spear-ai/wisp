@@ -8,8 +8,8 @@ body:
       label: Is maintenance
       description: Is this issue related to maintenance of the project?
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
     validations:
       required: true
   - type: textarea
