@@ -3,10 +3,20 @@ description: Create a feature request.
 type: Feature
 body:
   - type: dropdown
+    id: is-good-first-issue
+    attributes:
+      label: Is this a good first issue for a developer?
+      description: e.g. An engineer who’s unfamiliar with the project could get started quickly.
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  - type: dropdown
     id: is-maintenance
     attributes:
-      label: Is maintenance
-      description: Is this issue related to maintenance of the project?
+      label: Does this contribute to the maintenance of the project?
+      description: e.g. Dependency updates, Documentation, Refactoring, Developer productivity, etc.
       options:
         - "Yes"
         - "No"
