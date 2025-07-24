@@ -29,7 +29,7 @@ jobs:
             *)
               echo "status=Canceled" >> $GITHUB_OUTPUT
               ;;
-          esac3
+          esac
       - name: Update project
         uses: nipe0324/update-project-v2-item-field@v2.0.2
         with:
