@@ -2,6 +2,14 @@ name: Feature
 description: Create a feature request.
 type: Feature
 body:
+  - type: radioboxes
+    id: is-maintenance
+    attributes:
+      label: Is maintenance
+      description: Does this contribute to the maintenance of the project?
+      options:
+        - label: Yes
+        - label: No
   - type: textarea
     attributes:
       label: Description
