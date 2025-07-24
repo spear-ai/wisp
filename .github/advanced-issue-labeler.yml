@@ -1,0 +1,11 @@
+# eslint-disable yml/file-extension
+policy:
+  - section:
+      - id:
+          - is-good-first-issue
+        block-list:
+          - Nope
+        label:
+          - name: good first issue
+            keys:
+              - Yep
