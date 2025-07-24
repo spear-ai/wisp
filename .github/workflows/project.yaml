@@ -1,22 +1,23 @@
-name: Project — Close Issue
+name: Project
 on:
   issues:
     types:
       - closed
       - opened
+      - reopened
+  pull_request:
+    types:
+      - closed
+      - opened
+      - reopened
+      - ready_for_review
 jobs:
-  handle-close:
-    name: Match issue to GitHub project
+  handle-issue-closed:
+    if: github.event_name == 'issues' && github.event.action == 'closed'
     runs-on: ubuntu-24.04
-    if: github.event.action == 'closed'
     steps:
-      - uses: actions/add-to-project@v1.0.2
-        id: add
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          project-url: https://github.com/orgs/spear-ai/projects/41
-      - name: Set the status based on the close reason
-        id: status
+      - id: status
+        name: Set the status based on the close reason
         run: |
           case "${{ github.event.issue.state_reason }}" in
             "completed")
@@ -28,26 +29,49 @@ jobs:
             *)
               echo "status=Canceled" >> $GITHUB_OUTPUT
               ;;
-          esac
-      - uses: kalgurn/update-project-item-status@v0.0.3
+          esac3
+      - name: Update project
+        uses: nipe0324/update-project-v2-item-field@v2.0.2
         with:
-          project-url: https://github.com/orgs/spear-ai/projects/41
+          field-name: Status
+          field-value: ${{ steps.status.outputs.status }}
           github-token: ${{ secrets.GH_TOKEN }}
-          item-id: ${{ steps.add.outputs.itemId }}
-          status: ${{ steps.status.outputs.status }}
-  handle-open:
-    name: Match issue to GitHub project
+          project-url: https://github.com/orgs/spear-ai/projects/41
+  handle-issue-opened:
+    if: github.event_name == 'issues' && (github.event.action == 'opened' || github.event.action == 'reopened')
     runs-on: ubuntu-24.04
-    if: github.event.action == 'opened'
+    permissions:
+      actions: read
+      contents: read
+      issues: write
     steps:
-      - uses: actions/add-to-project@v1.0.2
-        id: add
+      - name: Update project
+        uses: nipe0324/update-project-v2-item-field@v2.0.2
         with:
+          field-name: Status
+          field-value: Backlog
           github-token: ${{ secrets.GH_TOKEN }}
           project-url: https://github.com/orgs/spear-ai/projects/41
-      - uses: kalgurn/update-project-item-status@v0.0.3
+      - id: parsed-issue
+        name: Parse issue
+        uses: stefanbuck/github-issue-parser@v3.2.1
         with:
-          project-url: https://github.com/orgs/spear-ai/projects/41
+          template-path: .github/ISSUE_TEMPLATE/feature.yml
+      - name: Set labels based on severity field
+        uses: redhat-plumbers-in-action/advanced-issue-labeler@v3.2.2
+        with:
+          issue-form: ${{ steps.parsed-issue.outputs.jsonString }}
+          token: ${{ secrets.GH_TOKEN }}
+  handle-review:
+    if: github.event_name == 'pull_request' && github.event.action == 'ready_for_review'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Update project
+        uses: nipe0324/update-project-v2-item-field@v2.0.2
+        with:
+          field-name: Status
+          field-value: In review
           github-token: ${{ secrets.GH_TOKEN }}
-          item-id: ${{ steps.add.outputs.itemId }}
-          status: Backlog
+          project-url: https://github.com/orgs/spear-ai/projects/41
+permissions:
+  contents: read
