@@ -10,6 +10,14 @@ policy:
             keys:
               - Yep
       - id:
+          - does_this_need_a_design
+        block-list:
+          - Nope
+        label:
+          - name: 💎 design
+            keys:
+              - Yep
+      - id:
           - is_this_a_good_first_issue
         block-list:
           - Nope
