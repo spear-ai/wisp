@@ -2,14 +2,16 @@ name: Feature
 description: Create a feature request.
 type: Feature
 body:
-  - type: radio
+  - type: dropdown
     id: is-maintenance
     attributes:
       label: Is maintenance
-      description: Does this contribute to the maintenance of the project?
+      description: Is this issue related to maintenance of the project?
       options:
-        - label: Yes
-        - label: No
+        - Yes
+        - No
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: Description
