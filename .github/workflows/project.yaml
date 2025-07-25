@@ -2,9 +2,12 @@ name: Project
 on:
   issues:
     types:
+      - assigned
       - closed
+      - labeled
       - opened
       - reopened
+      - unassigned
   pull_request:
     types:
       - closed
