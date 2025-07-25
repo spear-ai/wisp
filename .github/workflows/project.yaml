@@ -29,17 +29,6 @@ jobs:
         uses: robvanderleek/create-issue-branch@main
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          autoDeleteBranch: true
-          autoLinkIssue: true
-          commentMessage: "Branch ${branchName} created for issue: ${issue.title}"
-          copyIssueAssigneeToPR: true
-          copyIssueDescriptionToPR: true
-          copyIssueLabelsToPR: true
-          copyIssueMilestoneToPR: true
-          copyIssueProjectsToPR: true
-          openDraftPR: true
-          prSkipCI: true
   handle-issue-closed:
     if: github.event_name == 'issues' && github.event.action == 'closed'
     runs-on: ubuntu-24.04

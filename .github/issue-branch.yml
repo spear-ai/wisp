@@ -1,0 +1,11 @@
+# eslint-disable yml/file-extension
+autoDeleteBranch: true
+autoLinkIssue: true
+commentMessage: "Branch ${branchName} created for issue: ${issue.title}"
+copyIssueAssigneeToPR: true
+copyIssueDescriptionToPR: true
+copyIssueLabelsToPR: true
+copyIssueMilestoneToPR: true
+copyIssueProjectsToPR: true
+openDraftPR: true
+prSkipCI: true
