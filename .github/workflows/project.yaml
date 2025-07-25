@@ -18,6 +18,25 @@ on:
       - reopened
       - synchronize
 jobs:
+  automatically_setup_pull_request:
+    if: github.event_name == 'issues'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Automatically create a draft pull request when an issue is marked as `Todo`
+        uses: robvanderleek/create-issue-branch@v1.9.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          autoDeleteBranch: true
+          autoLinkIssue: true
+          commentMessage: "Branch ${branchName} created for issue: ${issue.title}"
+          copyIssueAssigneeToPR: true
+          copyIssueDescriptionToPR: true
+          copyIssueLabelsToPR: true
+          copyIssueMilestoneToPR: true
+          copyIssueProjectsToPR: true
+          openDraftPR: true
+          prSkipCI: true
   handle-issue-closed:
     if: github.event_name == 'issues' && github.event.action == 'closed'
     runs-on: ubuntu-24.04
