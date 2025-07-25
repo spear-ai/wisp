@@ -11,6 +11,12 @@ on:
       - opened
       - reopened
       - ready_for_review
+  pull_request_target:
+    types:
+      - edited
+      - opened
+      - reopened
+      - synchronize
 jobs:
   handle-issue-closed:
     if: github.event_name == 'issues' && github.event.action == 'closed'
@@ -62,6 +68,16 @@ jobs:
         with:
           issue-form: ${{ steps.parsed-issue.outputs.jsonString }}
           token: ${{ secrets.GH_TOKEN }}
+  handle-pull-request:
+    if: github.event_name == 'pull_request_target'
+    runs-on: ubuntu-24.04
+    permissions:
+      issues: read
+      pull-requests: write
+    steps:
+      - uses: nearform-actions/github-action-check-linked-issues@v1.8.3
+        with:
+          exclude-branches: "dependabot/**, deploy"
   handle-review:
     if: github.event_name == 'pull_request' && github.event.action == 'ready_for_review'
     runs-on: ubuntu-24.04
