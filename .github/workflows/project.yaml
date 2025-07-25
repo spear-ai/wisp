@@ -75,7 +75,8 @@ jobs:
       issues: read
       pull-requests: write
     steps:
-      - uses: nearform-actions/github-action-check-linked-issues@v1.8.3
+      - name: Require a pull request to have at least one linked issue
+        uses: nearform-actions/github-action-check-linked-issues@v1.8.3
         with:
           exclude-branches: "dependabot/**, deploy"
   handle-review:
