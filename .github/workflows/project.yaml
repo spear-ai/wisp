@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Automatically create a draft pull request when an issue is marked as `Todo`
-        uses: robvanderleek/create-issue-branch@v1.9.0
+        uses: robvanderleek/create-issue-branch@main
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
