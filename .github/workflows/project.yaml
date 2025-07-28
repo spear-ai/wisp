@@ -90,27 +90,7 @@ jobs:
         uses: nearform-actions/github-action-check-linked-issues@v1.8.3
         with:
           exclude-branches: "dependabot/**, deploy"
-  handle-pull-request-closed:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Mark the item as `Done` when a pull request is merged
-        if: github.event.pull_request.merged == true
-        uses: nipe0324/update-project-v2-item-field@v2.0.2
-        with:
-          field-name: Status
-          field-value: Done
-          github-token: ${{ secrets.GH_TOKEN }}
-          project-url: https://github.com/orgs/spear-ai/projects/41
-      - name: Mark the item as `Canceled` when a pull request is closed but not merged
-        if: github.event.pull_request.merged == false
-        uses: nipe0324/update-project-v2-item-field@v2.0.2
-        with:
-          field-name: Status
-          field-value: Done
-          github-token: ${{ secrets.GH_TOKEN }}
-          project-url: https://github.com/orgs/spear-ai/projects/41
-  handle-review:
+  handle-pull-request-ready-for-review:
     if: github.event_name == 'pull_request' && github.event.action == 'ready_for_review'
     runs-on: ubuntu-24.04
     steps:
