@@ -25,7 +25,7 @@
     "next-view-transitions": "0.3.4",
     "npm-package-json-lint": "9.0.0",
     "prettier": "3.6.2",
-    "react": "19.1.0",
+    "react": "19.1.1",
     "tailwindcss": "4.1.11",
     "turbo": "2.5.5",
     "typescript": "5.8.3"
