@@ -10,7 +10,7 @@
   "type": "module",
   "dependencies": {
     "@formatjs/intl-localematcher": "0.6.1",
-    "@sentry/nextjs": "9.40.0",
+    "@sentry/nextjs": "10.8.0",
     "@t3-oss/env-nextjs": "0.13.8",
     "@vercel/analytics": "1.5.0",
     "memoize": "10.1.0",
