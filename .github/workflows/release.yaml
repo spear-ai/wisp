@@ -15,7 +15,7 @@ jobs:
     permissions: write-all
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6.3.0
         with:
@@ -62,7 +62,7 @@ jobs:
     permissions: write-all
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
       - name: Deploy to Vercel by pointing `deploy` branch to `main`
         run: |
           git checkout -B deploy
