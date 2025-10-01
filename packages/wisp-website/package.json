@@ -15,7 +15,7 @@
     "@vercel/analytics": "1.5.0",
     "memoize": "10.1.0",
     "negotiator": "1.0.0",
-    "next": "15.4.1",
+    "next": "15.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-intl": "7.1.11",
