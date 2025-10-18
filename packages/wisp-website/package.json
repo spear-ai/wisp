@@ -20,7 +20,7 @@
     "react-dom": "19.1.0",
     "react-intl": "7.1.11",
     "rtl-detect": "1.1.2",
-    "unicornstudio-react": "1.4.27",
+    "unicornstudio-react": "1.4.33",
     "use-debounce": "10.0.5",
     "use-typing-effect": "1.1.0",
     "usehooks-ts": "3.1.1",
