@@ -2,25 +2,25 @@ version: 2
 updates:
   - directory: /
     labels:
-      - 🔧 maintenance
+      - Maintenance
     package-ecosystem: github-actions
     schedule:
       interval: monthly
   - directory: /
     labels:
-      - 🔧 maintenance
+      - Maintenance
     package-ecosystem: npm
     schedule:
       interval: monthly
   - directory: /packages/wisp-desktop
     labels:
-      - 🔧 maintenance
+      - Maintenance
     package-ecosystem: npm
     schedule:
       interval: monthly
   - directory: /packages/wisp-website
     labels:
-      - 🔧 maintenance
+      - Maintenance
     package-ecosystem: npm
     schedule:
       interval: monthly
