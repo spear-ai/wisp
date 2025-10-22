@@ -26,7 +26,7 @@ nextConfig = withSentryConfig(nextConfig, {
     enabled: true,
   },
   silent: process.env.CI !== "true",
-  tunnelRoute: "/api/sentry",
+  tunnelRoute: "adsf",
   widenClientFileUpload: true,
 });
 
