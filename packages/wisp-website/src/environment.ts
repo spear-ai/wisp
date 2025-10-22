@@ -8,7 +8,7 @@ export const environment = createEnv({
       .string()
       .trim()
       .nullish()
-      .transform((value) => value ?? null),
+      .transform((value) => value ?? ""),
     NEXT_PUBLIC_SENTRY_IS_ENABLED: z
       .enum(["", "false", "true", "false"])
       .nullish()
@@ -18,7 +18,7 @@ export const environment = createEnv({
     z.object(shape).transform((environment_, context) => {
       if (
         environment_.NEXT_PUBLIC_SENTRY_IS_ENABLED &&
-        environment_.NEXT_PUBLIC_SENTRY_DSN === null
+        environment_.NEXT_PUBLIC_SENTRY_DSN === ""
       ) {
         context.addIssue({
           code: "custom",

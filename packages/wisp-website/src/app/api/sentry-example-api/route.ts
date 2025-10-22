@@ -10,7 +10,8 @@ class SentryExampleAPIError extends Error {
 // A faulty API route to test Sentry's error monitoring
 export function GET() {
   throw new SentryExampleAPIError(
-    "This error is raised on the backend called by the example page.",
+    "This error is raised on the backend called by the example page."
   );
+  // @ts-expect-error - This is a test error to trigger a Sentry error
   return NextResponse.json({ data: "Testing Sentry Error..." });
 }
