@@ -2,7 +2,7 @@
 
 import * as Sentry from "@sentry/nextjs";
 import Head from "next/head";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
 class SentryExampleFrontendError extends Error {
   constructor(message: string | undefined) {
@@ -166,7 +166,7 @@ export default function Page() {
           &:disabled {
 	            cursor: not-allowed;
 	            opacity: 0.6;
-	
+
 	            & > span {
 	              transform: translateY(0);
 	              border: none
@@ -214,7 +214,7 @@ export default function Page() {
           text-align: center;
           margin: 0;
         }
-        
+
         .connectivity-error a {
           color: #FFFFFF;
           text-decoration: underline;

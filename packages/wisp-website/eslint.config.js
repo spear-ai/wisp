@@ -12,6 +12,8 @@ const eslintConfig = [
       "**/public/*",
       "next-env.d.ts",
       "**/__generated__",
+      "**/sentry-example-api/**",
+      "**/sentry-example-page/**",
     ],
   },
   ...baseEslintConfig,
