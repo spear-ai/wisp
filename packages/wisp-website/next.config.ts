@@ -28,8 +28,8 @@ nextConfig = withSentryConfig(nextConfig, {
   reactComponentAnnotation: {
     enabled: true,
   },
-  silent: process.env.CI === "null",
-  tunnelRoute: "/monitoring",
+  silent: process.env.CI !== "true",
+  tunnelRoute: "/sentry",
   widenClientFileUpload: true,
 });
 
