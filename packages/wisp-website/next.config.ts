@@ -18,6 +18,7 @@ let nextConfig: NextConfig = {
 };
 
 nextConfig = withSentryConfig(nextConfig, {
+  authToken: process.env.SENTRY_AUTH_TOKEN,
   automaticVercelMonitors: true,
   disableLogger: true,
   org: "spear-ai",
