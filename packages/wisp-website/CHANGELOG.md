@@ -1,5 +1,23 @@
 # @spear-ai/wisp-website
 
+## 1.1.0
+
+### Minor Changes
+
+- [#103](https://github.com/spear-ai/wisp/pull/103) [`781e32f`](https://github.com/spear-ai/wisp/commit/781e32f6de90862cf9714dbbd2b9fbd681c45c1d) Thanks [@psirenny](https://github.com/psirenny)! - Added most Sentry integrations.
+
+- [#103](https://github.com/spear-ai/wisp/pull/103) [`781e32f`](https://github.com/spear-ai/wisp/commit/781e32f6de90862cf9714dbbd2b9fbd681c45c1d) Thanks [@psirenny](https://github.com/psirenny)! - Added Sentry logging.
+
+- [#103](https://github.com/spear-ai/wisp/pull/103) [`781e32f`](https://github.com/spear-ai/wisp/commit/781e32f6de90862cf9714dbbd2b9fbd681c45c1d) Thanks [@psirenny](https://github.com/psirenny)! - Added the ability to detect when running in CI.
+
+### Patch Changes
+
+- [#103](https://github.com/spear-ai/wisp/pull/103) [`781e32f`](https://github.com/spear-ai/wisp/commit/781e32f6de90862cf9714dbbd2b9fbd681c45c1d) Thanks [@psirenny](https://github.com/psirenny)! - Fixed Sentry release tracking.
+
+- [#103](https://github.com/spear-ai/wisp/pull/103) [`781e32f`](https://github.com/spear-ai/wisp/commit/781e32f6de90862cf9714dbbd2b9fbd681c45c1d) Thanks [@psirenny](https://github.com/psirenny)! - Updated website's Sentry dependencies.
+
+- [#103](https://github.com/spear-ai/wisp/pull/103) [`781e32f`](https://github.com/spear-ai/wisp/commit/781e32f6de90862cf9714dbbd2b9fbd681c45c1d) Thanks [@psirenny](https://github.com/psirenny)! - Fixed Sentry source map upload.
+
 ## 1.0.2
 
 ### Patch Changes
