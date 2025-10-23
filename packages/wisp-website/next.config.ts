@@ -1,10 +1,10 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
-import { environment } from "@/environment";
 
 // eslint-disable-next-line import-x/no-mutable-exports
 let nextConfig: NextConfig = {
   poweredByHeader: false,
+  productionBrowserSourceMaps: true,
   // eslint-disable-next-line @typescript-eslint/require-await
   redirects: async () => [
     {
@@ -26,7 +26,7 @@ nextConfig = withSentryConfig(nextConfig, {
   reactComponentAnnotation: {
     enabled: true,
   },
-  silent: !environment.CI,
+  silent: false,
   tunnelRoute: true,
   widenClientFileUpload: true,
 });
