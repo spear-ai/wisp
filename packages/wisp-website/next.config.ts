@@ -1,5 +1,6 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
+import { environment } from "@/environment";
 
 // eslint-disable-next-line import-x/no-mutable-exports
 let nextConfig: NextConfig = {
@@ -25,7 +26,7 @@ nextConfig = withSentryConfig(nextConfig, {
   reactComponentAnnotation: {
     enabled: true,
   },
-  silent: process.env.CI !== "true",
+  silent: environment.CI,
   tunnelRoute: true,
   widenClientFileUpload: true,
 });
