@@ -2,6 +2,9 @@ import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 import { environment } from "@/environment";
 
+console.log("HERE");
+console.log(environment.CI);
+
 // eslint-disable-next-line import-x/no-mutable-exports
 let nextConfig: NextConfig = {
   poweredByHeader: false,
