@@ -1,5 +1,11 @@
 # @spear-ai/wisp-website
 
+## 1.1.1
+
+### Patch Changes
+
+- [#105](https://github.com/spear-ai/wisp/pull/105) [`111591b`](https://github.com/spear-ai/wisp/commit/111591b866856273e7c2e2b6c8b9be1748284ea1) Thanks [@psirenny](https://github.com/psirenny)! - Fixed Vercel environment variables.
+
 ## 1.1.0
 
 ### Minor Changes
