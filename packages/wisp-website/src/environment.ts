@@ -43,7 +43,7 @@ export const environment = createEnv({
       .trim()
       .nullish()
       .transform(
-        (value) => (value === "" || value == null ? "false" : "true") as string
+        (value) => (value === "" || value == null ? "false" : "true") as string,
       )
       .pipe(z.stringbool()),
   },
