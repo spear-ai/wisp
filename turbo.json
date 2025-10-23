@@ -70,7 +70,6 @@
     "build": {
       "dependsOn": ["^build"],
       "env": [
-        "*",
         "CI",
         "NEXT_*",
         "NODE_ENV",
