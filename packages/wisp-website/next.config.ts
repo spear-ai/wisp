@@ -3,10 +3,8 @@ import type { NextConfig } from "next";
 
 // eslint-disable-next-line import-x/no-mutable-exports
 let nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   poweredByHeader: false,
+  productionBrowserSourceMaps: true,
   // eslint-disable-next-line @typescript-eslint/require-await
   redirects: async () => [
     {
@@ -28,8 +26,8 @@ nextConfig = withSentryConfig(nextConfig, {
   reactComponentAnnotation: {
     enabled: true,
   },
-  silent: process.env.CI === "null",
-  tunnelRoute: "/monitoring",
+  silent: false,
+  tunnelRoute: true,
   widenClientFileUpload: true,
 });
 

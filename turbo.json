@@ -69,6 +69,15 @@
     },
     "build": {
       "dependsOn": ["^build"],
+      "env": [
+        "CI",
+        "NEXT_*",
+        "NODE_ENV",
+        "SENTRY_*",
+        "TURBOPACK",
+        "VERCEL",
+        "VERCEL_*"
+      ],
       "inputs": ["$TURBO_DEFAULT$", "!CHANGELOG.md", "!README.md"],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"]
     },
