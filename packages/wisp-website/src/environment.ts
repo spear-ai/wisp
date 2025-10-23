@@ -33,7 +33,18 @@ export const environment = createEnv({
     }),
   extends: [vercel()],
   runtimeEnv: {
+    CI: process.env.CI,
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
     NEXT_PUBLIC_SENTRY_IS_ENABLED: process.env.NEXT_PUBLIC_SENTRY_IS_ENABLED,
+  },
+  server: {
+    CI: z
+      .string()
+      .trim()
+      .nullish()
+      .transform(
+        (value) => (value === "" || value == null ? "false" : "true") as string
+      )
+      .pipe(z.stringbool()),
   },
 });
