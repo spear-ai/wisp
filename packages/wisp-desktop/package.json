@@ -30,7 +30,7 @@
     "postcss-load-config": "6.0.1",
     "prettier": "3.6.2",
     "stylelint": "16.25.0",
-    "tailwindcss": "4.1.15",
+    "tailwindcss": "4.1.16",
     "turbo": "2.5.8",
     "typescript": "5.9.3"
   },
