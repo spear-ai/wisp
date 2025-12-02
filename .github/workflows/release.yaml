@@ -27,7 +27,7 @@ jobs:
           git config --global user.email org@spear.ai
           git config --global user.name org-spear-ai
       - name: Setup PNPM
-        uses: pnpm/action-setup@v4.1.0
+        uses: pnpm/action-setup@v4.2.0
       - name: Setup Node.js
         uses: actions/setup-node@v4.4.0
         with:
