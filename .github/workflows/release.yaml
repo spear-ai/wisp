@@ -37,7 +37,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       - id: changesets
         name: Run Changesets — Create a Release Pull Request or merge a Release Pull Request
-        uses: changesets/action@v1.5.3
+        uses: changesets/action@v1.6.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
